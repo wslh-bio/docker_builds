@@ -3,7 +3,7 @@ FROM ubuntu:xenial
 
 # metadata
 LABEL base.image="ubuntu:xenial"
-LABEL container.version="1.1"
+LABEL container.version="1"
 LABEL software="Kraken"
 LABEL software.version="1.0"
 LABEL description="Taxonomic sequence classifier"
