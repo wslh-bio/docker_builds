@@ -1,8 +1,6 @@
 FROM ubuntu:xenial
 
-# For easy upgrade
-ARG QUAST_VER=5.0.2
-
+# Based on https://github.com/StaPH-B/docker-builds/blob/master/quast/5.0.2/Dockerfile
 LABEL base.image="ubuntu:xenial"
 LABEL dockerfile.version="1"
 LABEL software="QUAST"
@@ -13,6 +11,7 @@ LABEL license="https://github.com/ablab/quast/blob/master/LICENSE.txt"
 LABEL maintainer="Abigail Shockey"
 LABEL maintainer.email="abigail.shockey@slh.wisc.edu"
 
+# Install dependencies 
 RUN apt-get update && apt-get install -y zlib1g-dev \
   pkg-config \
   libfreetype6-dev \
@@ -33,15 +32,16 @@ RUN apt-get update && apt-get install -y zlib1g-dev \
   apt-get autoclean && \
   rm -rf /var/lib/apt/lists/*
 
-# for singularity compatibility
+# For singularity compatibility
 ENV LC_ALL=C
 
-# install quast and make /data directory
-RUN wget https://github.com/ablab/quast/releases/download/quast_${QUAST_VER}/quast-${QUAST_VER}.tar.gz && \
-    tar -xzf quast-${QUAST_VER}.tar.gz && \
-    rm -rf quast-${QUAST_VER}.tar.gz && \
-    cd /quast-${QUAST_VER} && \
-    /quast-${QUAST_VER}/setup.py install && \
+# Install quast and make /data directory
+RUN wget https://github.com/ablab/quast/releases/download/quast_5.0.2/quast-5.0.2.tar.gz && \
+    tar -xzf quast-5.0.2.tar.gz && \
+    rm -rf quast-5.0.2.tar.gz && \
+    cd /quast-5.0.2 && \
+    /quast-5.0.2/setup.py install && \
     mkdir /data
 
+# Set working directory
 WORKDIR /data
