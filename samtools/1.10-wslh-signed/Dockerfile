@@ -1,5 +1,6 @@
 FROM ubuntu:xenial
 
+# based on https://github.com/StaPH-B/docker-builds/blob/master/samtools/1.10/Dockerfile
 LABEL base.image="ubuntu:xenial"
 LABEL version="1"
 LABEL software="Samtools"
