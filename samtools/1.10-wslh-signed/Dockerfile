@@ -1,6 +1,7 @@
 FROM ubuntu:xenial
 
 # based on https://github.com/StaPH-B/docker-builds/blob/master/samtools/1.10/Dockerfile
+# metadata
 LABEL base.image="ubuntu:xenial"
 LABEL version="1"
 LABEL software="Samtools"
@@ -23,15 +24,15 @@ RUN apt-get update && apt-get install -y libncurses5-dev \
   perl \
   bzip2
 
-RUN mkdir samtools &&\
-  mkdir data &&\
-  cd samtools &&\
-  wget https://github.com/samtools/samtools/releases/download/1.10/samtools-1.10.tar.bz2 &&\
-  tar -xjf samtools-1.10.tar.bz2 &&\
-  rm samtools-1.10.tar.bz2 &&\
-  cd samtools-1.10 &&\
-  ./configure &&\
-  make &&\
+RUN mkdir samtools && \
+  mkdir data && \
+  cd samtools && \
+  wget https://github.com/samtools/samtools/releases/download/1.10/samtools-1.10.tar.bz2 && \
+  tar -xjf samtools-1.10.tar.bz2 && \
+  rm samtools-1.10.tar.bz2 && \
+  cd samtools-1.10 && \
+  ./configure && \
+  make && \
   make install
 
 # set perl locale settings
