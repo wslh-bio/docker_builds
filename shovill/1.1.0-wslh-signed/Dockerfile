@@ -1,6 +1,7 @@
 FROM ubuntu:xenial
 
 # based on https://github.com/StaPH-B/docker-builds/blob/master/shovill/1.1.0/Dockerfile
+# metadata
 LABEL base.image="ubuntu:xenial"
 LABEL container.version="1"
 LABEL software="Shovill"
