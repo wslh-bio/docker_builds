@@ -1,5 +1,6 @@
 FROM ubuntu:xenial
 
+# based on https://github.com/StaPH-B/docker-builds/blob/master/bbtools/38.76/Dockerfile
 LABEL base.image="ubuntu:xenial"
 LABEL version="1"
 LABEL software="BBTools"
@@ -17,5 +18,7 @@ RUN wget https://sourceforge.net/projects/bbmap/files/BBMap_38.76.tar.gz &&\
   tar -xzf BBMap_38.76.tar.gz &&\
   rm BBMap_38.76.tar.gz
 
-ENV PATH="${PATH}:/bbmap"
+ENV PATH="${PATH}:/bbmap"\
+ LC_ALL=C
+  
 WORKDIR /data
