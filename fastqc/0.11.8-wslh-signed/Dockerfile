@@ -1,6 +1,7 @@
 # base image
 FROM ubuntu:xenial
 
+# based on https://github.com/StaPH-B/docker-builds/blob/master/fastqc/0.11.8/Dockerfile
 # metadata
 LABEL base.image="ubuntu:xenial"
 LABEL version="1"
@@ -25,7 +26,8 @@ RUN wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.
     chmod +x FastQC/fastqc
 
 
-ENV PATH="${PATH}:/FastQC/"
+ENV PATH="${PATH}:/FastQC/"\
+ LC_ALL=C
 
 RUN mkdir /data
 WORKDIR /data
