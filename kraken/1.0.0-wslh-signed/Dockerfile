@@ -24,6 +24,7 @@ RUN apt-get update && apt-get -y install \
 # DL Jellyfish, unpack, and install
 RUN wget https://github.com/gmarcais/Jellyfish/releases/download/v1.1.12/jellyfish-1.1.12.tar.gz && \
   tar -zxf jellyfish-1.1.12.tar.gz && rm -rf jellyfish-1.1.12.tar.gz
+
 RUN cd jellyfish-1.1.12 && ./configure --prefix=/opt/ && make -j 4 && make install
 
 # DL Kraken v1.0, unpack, and install
@@ -37,6 +38,7 @@ RUN wget https://github.com/DerrickWood/kraken/archive/v1.0.tar.gz && \
 
 ENV PATH="$PATH:/opt/kraken:/opt/bin" \
     LC_ALL=C
+
 WORKDIR /data
 
 # this perl module and rsync required for kraken-build
